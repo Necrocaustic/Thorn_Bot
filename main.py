@@ -12,6 +12,7 @@ intents.members = True
 """
 # UPDATE CHANNEL IDS SOMEWHERE IF YOU RUN OUT OF TIME IN CLASS
 def get_prefix(bot, message):
+
 bot = commands.Bot(command_prefix="~",
                    activity=discord.Activity(type=discord.ActivityType.playing,
                                              name='with Phant0m'),
