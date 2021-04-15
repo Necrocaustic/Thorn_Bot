@@ -1,18 +1,21 @@
-from keep_alive import keep_alive
 import discord
-
 from discord.ext import commands
+
+
 import sys
 from config import token
 import traceback
-
+"""
 intents = discord.Intents.default()
 intents.typing = False
 intents.members = True
+"""
 # UPDATE CHANNEL IDS SOMEWHERE IF YOU RUN OUT OF TIME IN CLASS
-build = '2.0.2'
+def get_prefix(bot, message):
 bot = commands.Bot(command_prefix="~",
-                   activity=discord.Activity(type=discord.ActivityType.playing, name='with Phant0m'), intents=intents)
+                   activity=discord.Activity(type=discord.ActivityType.playing,
+                                             name='with Phant0m'),
+                   intents=discord.Intents.all())
 
 initial_extensions = ['cogs.admin',
                       'cogs.owner',
@@ -24,20 +27,6 @@ initial_extensions = ['cogs.admin',
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
     print('Build:', build)
-
-
-@bot.command()
-async def avatar(ctx, target: discord.User = None):
-    """Shows a Users avatar. Defaults to the Author"""
-    if target is None:
-        target = ctx.author
-    await ctx.send(target.avatar_url)
-
-
-@bot.command(aliases=['hi'])
-async def hello(ctx):
-    """Kenobi Gif"""
-    await ctx.send('https://tenor.com/view/hello-there-hi-there-greetings-gif-9442662')
 
 
 @bot.command(aliases=['objectiveadd'])
@@ -223,5 +212,5 @@ async def on_command_error(ctx, error):
             'There was an error. Try running the command again with the right parameters, or use ~reportissue to let my developer know about you seeing this. If you are running a command that require arguements, check to ensure all of the fields are filled. And yes, ~fetchmessage REQUIRES a message ID. You won\'t get anything without it.')
 
 
-keep_alive()
+#keep_alive() don't need this
 bot.run(token, bot=True, reconnect=True)
