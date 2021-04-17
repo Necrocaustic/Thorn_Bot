@@ -23,7 +23,8 @@ def get_prefix(bot, message):
 initial_extensions = ['cogs.admin',
                       'cogs.owner',
                       'cogs.mngemnt',
-                      'cogs.easter'
+                      'cogs.easter',
+                      'cogs.generaluse'
                       ]
 
 bot = commands.Bot(command_prefix=get_prefix,
@@ -52,20 +53,10 @@ async def addobjective(ctx, *, msg_id):
     await ctx.send('Objective added, thank you for contributing to the bot.')
 
 
-# IT WORKS WE GOT IT BOYS
-@bot.command(aliases=['statuwu'])
-async def status(ctx):
-    """Shows status of bot"""
-    await ctx.send('Online and running: {}'.format(build))
 
 
-@bot.command()
-async def whoareyou(ctx):
-    """Tells the Homies who I am"""
-    embedVar = discord.Embed(title="Hello there! I am Thorn, Phant0m's custom bot.",
-                             description="My creator is <@395813601316831254>, please reach out to him with any issues, or use the `~reportissue` command. To get started with me, use `~help` for a series of commands.",
-                             color=0x228B22, image='https://media.discordapp.net/attachments/755213780778221578/')
-    await ctx.send(embed=embedVar)
+
+
 
 
 @bot.command(aliases=['issuereport'])
@@ -99,20 +90,12 @@ async def lfg(ctx):
     await ctx.send(embed=embedVar)
 
 
-# possible improvement to below is to put a message ID and grab user, but not nessecary rn.
-@bot.command()
-async def zodiac(ctx, *, UserID):
-    """Calls a user a Babylonian racist"""
-    await ctx.send(
-        'Hey there, <@{}>, you ancient Babylonian racist. https://vm.tiktok.com/ZMeUcjhSB/ Have fun'.format(UserID))
 
 
-@bot.command()
-async def goldstar(ctx):
-    """You Tried (TM)"""
-    await ctx.send('https://tenor.com/view/ahtf-gif-5633413')
 
 
+
+#admin cog, deal with later.
 @bot.command(aliases=['dmgcontrol', 'dmgcntrl', 'lock'])
 async def damagecontrol(ctx):
     """ADMIN ONLY COMMAND. Locks channel for time speficified, in seconds."""
@@ -123,6 +106,7 @@ async def damagecontrol(ctx):
     else:
         await ctx.send('You can\'t use that, you silly goose! You aren\'t an admin. I\'m not that stupid!')
 
+#ditto
 
 @bot.command(aliases=['unlockchannel', 'unlock', 'unlckchnl'])
 async def dmgcontrolend(ctx):
@@ -134,7 +118,7 @@ async def dmgcontrolend(ctx):
         await ctx.send('Think you\'re funny, huh?')
         await ctx.send('https://tenor.com/view/facepalm-dismay-disappointed-stressed-this-bitch-gif-17906721')
 
-
+#either make a general use cog, or put this in mgmt
 # ready for import in 2.0.1
 @bot.command(aliases=['fetchmsg', 'fetchmessage'])
 async def fetch(ctx, *, msgid):
@@ -176,42 +160,6 @@ async def on_member_remove(member):
     await channel.send(embed=embed)
 
 
-# all easter eggs below
-@bot.event
-async def on_message(message):
-    if message.content.startswith('fuck thorn'):
-        await message.channel.send(
-            'You rn: {} https://tenor.com/view/lion-king-hyena-thorns-ouch-painful-gif-12925804'.format(
-                message.author.mention))
-
-    if message.content.startswith('BONK'):
-        await message.channel.send('https://tenor.com/view/bonk-gif-18805247')
-
-    if message.content.startswith('pog'):
-        await message.channel.send('stfu you\'re actually cringe wtf')
-
-    if message.content.startswith('Necro is amazing'):
-        await message.channel.send('Totally. Y\'all should buy him Nitro')
-
-    if message.content.startswith('prefix'):
-        await message.channel.send('My prefix is ~')
-
-    if message.content.startswith('GME'):
-        await message.channel.send(':rocket: to the moon :rocket:')
-
-    if message.content.startswith('thighs'):
-        await message.channel.send('Mine are the thickest of them all')
-
-    if message.content.startswith('hellfire'):
-        await message.channel.send(
-            'Ĩ̸̝͝ ̷̧̼̮̤̖͚̬̣͕̖̆̓̆ẉ̶̢̧̟̺̱͖̺̙̥̲̖͚̟̖̈̽̀͐̿̄͛͜į̴̣̱̻̬̦̪̱̜̪̳̲̬͖̟̳̏͒̕ͅl̴̻͎͋́́̋̏̑̉̾͗͌̒͌́̑̚̚͠l̴̛͔͖̱̜̪̹͔̞̯̺̘̜̣̟̝̘̾̍ͅ ̴̜̞̙̐͗̇̉̀͆̏r̵̛̛̹̍̆͛̈̆̎̈́̑̍̑̃̈̂̄́͗͝ą̸̝͙̩̼̠̖͉͉͙̹̥̘̫̗̲̩̝̥͚͊͐͋̇ḯ̸̧̨̧̯͍͖̰̻̣̖̙̺̙̭̺͍̳̣͔̩͐̄̀͊̏̀̋̅͋́̆̏̏̈̔́̈́̕͘͜͠n̷̨̡̡̲̤͚̺͒ ̷̡͉̰̠͓̥̙̅͛͛͑͐̋͐̂̑͂̚͠͠͠͝h̴̢̩̣̲̟͎͉͚̿͛̀̎̽̉̿̂̂̒́̓̐̀́͐͛̐̀̚͝ͅḛ̴̡̛̠̖̟̼͚̩̈̍̆͂̒̄̔̀̔͂̃͝͝ļ̷̗̱̖͔̰̩̯͈͇̔̎́̔̊̿͜l̶̨͚̻͍̤͕̪̟̣̭̞̱̪͚̬̩̤̻͍̔̍f̵̛̗̰̻͉̯͙̣̗̞̆̌͒̿̽̅̍̀̆̔͌̈́̈̂͑͘͜͝ỉ̴̡̢̨̮̞͈̖͙͙̺̣̻̠͕͙̮̰͍̀̌̅̓͒͗͌̑̈͂̕͘͜͜͠ŗ̴̨̧̜͇̞̻͖̞͛͋̕e̸̢̧̡̨̜̼̟̫̱̮̱̱̜̰̝͕͑͜ ̶̧̻̺̪̪̳̩͙͔̼̹̰͐͜ứ̸̧̡̛͚̞̩̤̜͕͍̮͖̇̃̅̀̑͊̾̈́̌̏̾̓̂͑́̚͝͝ͅp̸̙̰̣̱̫̱̯͈̩̌̎̊̔̕̚͝o̴͉͎̰͔̺̐̆̓̌̽̆̂̈́̌͐̄͂͝͝n̴̖̆̈́ ̸̛͔͔̗̖͖̠͛̋̈́̈́y̸̨̎̎̂̐̂̈́̾̽̄̂͌͋̅̓̂͆̐́̎͝o̶̮̺͍̰̩͖̾́̌̎̎͛͘u̴̢̢͇̗͎̣̰̞̲̲̎͆̈́̄̈̓̏͂͌͑̄̆̈́̋̏̕͜͠͝')
-
-    if message.content.startswith('Tex Mechanica'):
-        await message.channel.send('YEEEEEEEEEEEEE HAWWWWWWWWWWWWWW!!!')
-
-    if message.content.startswith('thick thighs'):
-        await message.channel.send('Save Lives~')
-    await bot.process_commands(message)
 
 
 @bot.event

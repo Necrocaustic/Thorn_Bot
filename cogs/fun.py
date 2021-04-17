@@ -18,6 +18,17 @@ class FunCog(commands.Cog):
         """Kenobi Gif"""
         await ctx.send('https://tenor.com/view/hello-there-hi-there-greetings-gif-9442662')
 
+    @commands.command()
+    async def zodiac(self, ctx, *, UserID):
+        """Calls the user a Babylonian Racist"""
+        await ctx.send(
+            'Hey there, <@{}>, you ancient Babylonian racist. https://vm.tiktok.com/ZMeUcjhSB/ . Have fun!'.format(UserID)
+        )
+    @commands.command()
+    async def goldstar(self, ctx):
+        """You tried (TM)"""
+        await ctx.send('https://tenor.com/view/ahtf-gif-5633413')
+
 
 def setup(bot):
     bot.add_cog(FunCog(bot))
