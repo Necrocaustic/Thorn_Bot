@@ -37,6 +37,9 @@ if __name__ == '__main__':
         bot.load_extension(extension)
 
 
+
+
+
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))

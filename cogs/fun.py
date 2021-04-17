@@ -6,6 +6,13 @@ class FunCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    """All commands that require a prefix have the following decorator:
+
+    @commands.command()
+    async def some_command (self, ctx)
+    etc
+    """
+
     @commands.command()
     async def avatar(self, ctx, target: discord.User = None):
         """Shows a Users avatar. Defaults to the Author"""
