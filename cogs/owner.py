@@ -45,12 +45,13 @@ class OwnerCog(commands.Cog, command_attrs=dict(hidden=True)):
             await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
         else:
             await ctx.send('**`SUCCESS`**')
+
     @commands.command(aliases=['objectiveadd'])
     @commands.is_owner()
-    async def addobbjective(self, ctx, *, msgid):
+    async def addobjective(self, ctx, *, msgid):
         """adds objective to a channel"""
         suggestion = await ctx.fetch_message(msgid)
-        channel = self.get_channel(825566825805905940)
+        channel = self.bot.get_channel(825566825805905940)
         embedVar = discord.Embed(title='OBJECTIVE ACQUIRED',
                                  description='Objective added: {}'.format(suggestion.content))
         await channel.send(embed=embedVar)

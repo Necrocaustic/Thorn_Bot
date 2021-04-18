@@ -34,7 +34,7 @@ class FunCog(commands.Cog):
     @commands.command()
     async def goldstar(self, ctx):
         """You tried (TM)"""
-        await ctx.send('https://tenor.com/view/ahtf-gif-5633413')
+        await ctx.reply('https://tenor.com/view/ahtf-gif-5633413')
 
 
 def setup(bot):

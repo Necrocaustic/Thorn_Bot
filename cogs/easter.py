@@ -39,16 +39,16 @@ class EasterCog(commands.Cog):
     @commands.command()
     async def hint(self, ctx):
         await ctx.reply('Your hint for today is:')
-        await ctx.send('https://tenor.com/view/realizes-its-no-nut-november-flop-mud-gif-15503679')
+        await ctx.send('https://tenor.com/view/love-beating-heart-heart-beating-gif-15458916')
 
     @commands.command()
     async def hint2(self, ctx):
-        await ctx.reply('You\'re second hint of the day is:')
-        await ctx.send('https://tenor.com/view/seal-bouncing-plop-flop-gif-11842197')
+        await ctx.reply('Your second hint of the day is:')
+        await ctx.send('https://tenor.com/view/plasma-gif-18879114')
     @commands.command()
     async def hint3(self, ctx):
-        await ctx.reply('You\'re third **__and final__** hint of the day is:')
-        await ctx.send('https://tenor.com/view/bruh-what-is-the-flop-everybody-do-the-flop-dance-dancing-gif-16110772')
+        await ctx.reply('Your third **__and final__** hint of the day is:')
+        await ctx.send('https://tenor.com/view/i-matter-lewis-thomas-stereoscope-the-red-wall-brian-white-gif-18822219')
 
 
 

@@ -7,7 +7,7 @@ class ManagementCog(commands.Cog):
     @commands.command(aliases=['issuereport'])
     async def reportissue(self, ctx, *, issue):
         """allows a user to report a bug"""
-        channel = self.get_channel(825566825805905940)
+        channel = self.bot.get_channel(825566825805905940)
         embedVar = discord.Embed(title='**ISSUE REPORTED**',
                                  description='ISSUE REPORTED BY {a}; Issue: {b}'.format(a=ctx.author, b=issue))
         await channel.send(embed=embedVar)

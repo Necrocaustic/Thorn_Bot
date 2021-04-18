@@ -91,15 +91,6 @@ async def on_ready():
 
 
 
-@bot.event
-async def on_command_error(ctx, error):
-    if isinstance(error, commands.errors.CheckFailure):
-        pass
-    else:
-        print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
-        traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
-        await ctx.send(
-            'There was an error. Try running the command again with the right parameters, or use ~reportissue to let my developer know about you seeing this. If you are running a command that require arguements, check to ensure all of the fields are filled. And yes, ~fetchmessage REQUIRES a message ID. You won\'t get anything without it.')
 
 
 # keep_alive() don't need this
